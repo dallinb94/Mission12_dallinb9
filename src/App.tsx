@@ -338,6 +338,7 @@ class Team extends React.Component {
         <li>{oneTeam.school}</li>
         <li>{oneTeam.name}</li>
         <li>{oneTeam.city}, {oneTeam.state}</li>
+        <br></br>
       </div>
     );
   }
@@ -346,21 +347,25 @@ class Team extends React.Component {
 function TeamList() {
   return (
     <div>
-      {bballTeams.map(oneTeam => <Team {...oneTeam}/>)}
+      {bballTeams.teams.map(oneTeam => <Team {...oneTeam}/>)}
     </div>
   );
 }
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
 
         <h1>Mission12_dallinb9</h1>
 
-        <TeamList/>
-
       </header>
+    
+    <div>
+
+      <TeamList/>
+
+    </div>
     </div>
   );
 }
