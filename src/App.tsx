@@ -1,10 +1,9 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 import './App.css';
 
 const bballTeams = [
-  {
-    "teams": [
-            {"tid": 159, "cid": 0, "did": 0, "school": "Boston College", "name": "Eagles", "abbrev": "BC", "pop": 161, "city": "Chestnut Hill", "state": "MA", "latitude": 42.330, "longitude": -71.166},
+  {"tid": 159, "cid": 0, "did": 0, "school": "Boston College", "name": "Eagles", "abbrev": "BC", "pop": 161, "city": "Chestnut Hill", "state": "MA", "latitude": 42.330, "longitude": -71.166},
             {"tid": 105, "cid": 0, "did": 0, "school": "Clemson", "name": "Tigers", "abbrev": "CLEM", "pop": 215, "city": "Clemson", "state": "SC", "latitude": 34.678, "longitude": -82.839},
             {"tid": 109, "cid": 0, "did": 0, "school": "Florida State", "name": "Seminoles", "abbrev": "FSU", "pop": 211, "city": "Tallahassee", "state": "FL", "latitude": 30.442, "longitude": -84.298},
             {"tid": 18, "cid": 0, "did": 0, "school": "Louisville", "name": "Cardinals", "abbrev": "UL", "pop": 302, "city": "Louisville", "state": "KY", "latitude": 38.25, "longitude": -85.766},
@@ -323,22 +322,28 @@ const bballTeams = [
             {"tid": 240, "cid": 19, "did": 39, "school": "Houston", "name": "Cougars", "abbrev": "HOU", "pop": 80, "city": "Houston", "state": "TX", "latitude": 29.718 , "longitude": -95.339},		
             {"tid": 88, "cid": 19, "did": 39, "school": "Memphis", "name": "Tigers", "abbrev": "MEMP", "pop": 232, "city": "Memphis", "state": "TN", "latitude": 35.119 , "longitude": -89.937},		
             {"tid": 212, "cid": 19, "did": 39, "school": "Tulane", "name": "Green Wave", "abbrev": "TUL", "pop": 108, "city": "New Orleans", "state": "NO", "latitude": 29.935 , "longitude": -90.122},		
-            {"tid": 287, "cid": 19, "did": 39, "school": "Houston Baptist", "name": "Huskies", "abbrev": "HBU", "pop": 33, "city": "Greater Sharpstown", "state": "TX", "latitude": 29.694 , "longitude": -95.515}  
-    ]
-}
+            {"tid": 287, "cid": 19, "did": 39, "school": "Houston Baptist", "name": "Huskies", "abbrev": "HBU", "pop": 33, "city": "Greater Sharpstown", "state": "TX", "latitude": 29.694 , "longitude": -95.515} 
 ];
 
-class Team extends React.Component {
+class Team extends React.Component < {school: string, name: string, city: string, state: string} > {
   render() {
 
     const oneTeam = this.props;
 
     return (
       <div>
-        <li>{oneTeam.school}</li>
-        <li>{oneTeam.name}</li>
-        <li>{oneTeam.city}, {oneTeam.state}</li>
+
+        <Card border="primary" style={{ borderWidth: "2px", borderRadius: "10px" }}>
+          <Card.Body>
+            <Card.Title>{oneTeam.school}</Card.Title>
+            <Card.Text>
+              <div>{oneTeam.name}</div>
+              <div>{oneTeam.city}, {oneTeam.state}</div>
+            </Card.Text>
+          </Card.Body>
+        </Card>
         <br></br>
+      
       </div>
     );
   }
@@ -347,7 +352,7 @@ class Team extends React.Component {
 function TeamList() {
   return (
     <div>
-      {bballTeams.teams.map(oneTeam => <Team {...oneTeam}/>)}
+      {bballTeams.map(oneTeam => <Team {...oneTeam}/>)}
     </div>
   );
 }
@@ -358,6 +363,7 @@ function App() {
       <header>
 
         <h1>Mission12_dallinb9</h1>
+        <h2>This website is a list of all the colleges in NCAA Basketball, their mascots, and their locations.</h2>
 
       </header>
     
